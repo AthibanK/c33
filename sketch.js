@@ -93,8 +93,12 @@ function mouseReleased(){
 }
 
 function keyPressed(){
-    if(keyCode === 32){
+    if(keyCode === 32 && (bird.body.speed<1 || ((bird.body.position.x<0 || bird.body.position.x>1200)||(bird.body.position.y<0 || bird.body.position.y>400)))){
        slingshot.attach(bird.body);
+      // smoke.png.visible == false;
+      bird.trajectory = [];
+      Matter.Body.setAngle(bird.body,0);
+      Matter.Body.setPosition(bird.body,{x:200,y:50});
     }
 }
 
